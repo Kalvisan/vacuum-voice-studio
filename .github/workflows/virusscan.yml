@@ -1,4 +1,4 @@
-name: Repository virusscan
+name: VirusScan
 
 on:
   push:

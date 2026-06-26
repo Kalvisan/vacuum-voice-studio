@@ -41,9 +41,9 @@ ALLOWED_URL_HOST_RE = re.compile(
     re.IGNORECASE,
 )
 
-# README and docs may link to this repository on GitHub (badges, issues, raw files).
+# README and docs may link to GitHub or common open-source badge hosts.
 MARKDOWN_URL_HOST_RE = re.compile(
-    r"^(github\.com|raw\.githubusercontent\.com|gist\.github\.com)$",
+    r"^(github\.com|raw\.githubusercontent\.com|gist\.github\.com|img\.shields\.io)$",
     re.IGNORECASE,
 )
 

@@ -1,6 +1,6 @@
 # Vacuum Voice Studio
 
-[![Repository virusscan](https://github.com/Kalvisan/vacuum-voice-studio/actions/workflows/virusscan.yml/badge.svg)](https://github.com/Kalvisan/vacuum-voice-studio/actions/workflows/virusscan.yml)
+[![VirusScan](https://img.shields.io/github/actions/workflow/status/Kalvisan/vacuum-voice-studio/virusscan.yml?branch=main&label=VirusScan)](https://github.com/Kalvisan/vacuum-voice-studio/actions/workflows/virusscan.yml)
 
 **Open source · custom robot vacuum voices · remote control · official cloud install**
 
@@ -25,7 +25,7 @@ If you searched for *custom robot vacuum voice*, *change vacuum robot sounds*, *
 | Install uses official Xiaomi cloud | See [How install works](#how-install-works-short) |
 | No malicious code in the repo | Run the built-in scan (below) |
 
-**Repository virusscan** — checks source files for unexpected outbound URLs, risky code patterns, and accidental secrets:
+**VirusScan** — checks source files for unexpected outbound URLs, risky code patterns, and accidental secrets:
 
 ```bash
 ./x20-voice-tool.sh --cli virusscan
