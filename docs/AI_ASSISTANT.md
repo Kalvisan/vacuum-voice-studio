@@ -1,6 +1,6 @@
 # Using your AI assistant with this tool
 
-You can use ChatGPT, Claude, Cursor, or any other AI agent to help you change the voice pack on your Xiaomi X20 Max robot.
+You can use ChatGPT, Claude, Cursor, Copilot, Gemini, or any other AI agent to help customize voice packs and control your robot vacuum.
 
 This project is built for that. The menu is for humans; the `--cli` commands and JSON output are for AI.
 
@@ -9,13 +9,14 @@ This project is built for that. The menu is for humans; the `--cli` commands and
 Copy this into your chat:
 
 ```text
-Help me change the voice pack on my Xiaomi Robot Vacuum X20 Max (model xiaomi.vacuum.d109gl).
+Help me customize the voice pack on my robot vacuum using Vacuum Voice Studio.
 
-I have the x20-voice-tool in this folder. Please:
-1. Run readiness checks with JSON output
-2. Guide me through sign-in if needed
-3. Tell me which numbered MP3 files to replace for the phrases I want to change
-4. Build and install the new pack on my robot
+I have this repository cloned in this folder. Please:
+1. Read AGENTS.md in the project root and follow it
+2. Run readiness checks with JSON output
+3. Guide me through sign-in if needed
+4. Tell me which numbered MP3 files to replace for the phrases I want to change
+5. Build and install the new pack on my robot
 
 Use ./x20-voice-tool.sh --cli ... --json for all commands.
 Never commit config/config.json (it contains my private session).
@@ -26,10 +27,10 @@ Read docs/VOICE_FILE_MAP.md to map file numbers to English phrases.
 
 | File | Why |
 |---|---|
+| [AGENTS.md](../AGENTS.md) | Canonical instructions for any AI agent |
 | [docs/VOICE_FILE_MAP.md](VOICE_FILE_MAP.md) | Which numbered MP3 matches which robot phrase |
 | [docs/CLI.md](CLI.md) | All commands and flags |
 | [assets/d109gl_en_transcriptions.csv](../assets/d109gl_en_transcriptions.csv) | Same map in CSV for parsing |
-| [.cursor/skills/xiaomi-x20-voice-pack/SKILL.md](../.cursor/skills/xiaomi-x20-voice-pack/SKILL.md) | Cursor skill for this workflow |
 
 ## Typical AI workflow
 
@@ -88,13 +89,9 @@ I have two X20 Max robots on one Xiaomi account. Configure both and install the 
 - Add or remove MP3 files from the pack (must stay at exactly 101 files)
 - Rename files (keep numeric names like `720.mp3`)
 
-## Cursor users
+## Cursor users (optional)
 
-If you use Cursor, install the project skill from:
-
-`.cursor/skills/xiaomi-x20-voice-pack/SKILL.md`
-
-Then ask: *"Use the xiaomi-x20-voice-pack skill to install my custom voice pack."*
+Cursor can load the thin project skill at `.cursor/skills/vacuum-voice-studio/SKILL.md`, which points to `AGENTS.md`. Other tools should read `AGENTS.md` directly.
 
 ## Restore original voice
 

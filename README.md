@@ -118,7 +118,7 @@ The tool has a **CLI mode** with JSON output so an AI agent can run checks, buil
 
 Start here: **[docs/AI_ASSISTANT.md](docs/AI_ASSISTANT.md)** — copy-paste prompt and command list.
 
-Cursor users: enable the project skill at `.cursor/skills/xiaomi-x20-voice-pack/SKILL.md`.
+AI agents working in this repo should read **[AGENTS.md](AGENTS.md)** first (works with any agent, not just Cursor). Cursor users can also enable `.cursor/skills/vacuum-voice-studio/SKILL.md`.
 
 Quick check:
 
@@ -176,6 +176,7 @@ See [SECURITY.md](SECURITY.md).
 | [STUDIO.md](docs/STUDIO.md) | Web editor — drag-and-drop voice packs |
 | [VOICE_FILE_MAP.md](docs/VOICE_FILE_MAP.md) | All 101 sounds explained |
 | [AI_ASSISTANT.md](docs/AI_ASSISTANT.md) | Work with your AI agent |
+| [AGENTS.md](AGENTS.md) | Agent instructions (any AI tool) |
 | [TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md) | Fixes for common issues |
 | [CLI.md](docs/CLI.md) | Automation and `--json` |
 | [SECURITY.md](SECURITY.md) | Privacy, trust, and virusscan |

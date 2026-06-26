@@ -22,6 +22,7 @@ SCAN_ROOTS = (
 SCAN_FILES = (
     ROOT_DIR / "x20-voice-tool.sh",
     ROOT_DIR / "README.md",
+    ROOT_DIR / "AGENTS.md",
     ROOT_DIR / "SECURITY.md",
     ROOT_DIR / "CONTRIBUTING.md",
     ROOT_DIR / "requirements.txt",
