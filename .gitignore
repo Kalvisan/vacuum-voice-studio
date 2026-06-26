@@ -1,0 +1,23 @@
+.DS_Store
+__pycache__/
+*.pyc
+.venv/
+
+# Private Xiaomi account/session values
+config/config.json
+config/.connection-ok
+config/*.bak
+config/*.bak.json
+config/config.bak.json
+
+# Local voice pack work (downloads, studio projects, builds)
+workspace/*
+!workspace/.gitkeep
+!workspace/README.md
+workspace/.voice_catalog_cache.json
+workspace/.studio_server.json
+
+output/
+
+# Local logs
+*.log

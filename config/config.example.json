@@ -1,0 +1,25 @@
+{
+  "region": "de",
+  "did": "YOUR_PRIMARY_ROBOT_DID",
+  "userId": "YOUR_XIAOMI_USER_ID",
+  "ssecurity": "YOUR_XIAOMI_SSECURITY",
+  "serviceToken": "YOUR_XIAOMI_SERVICE_TOKEN",
+  "accessKey": "IOS00026747c5acafc2",
+  "endpoint": "https://de.core.api.io.mi.com/app/miotspec/action",
+  "vacuum_devices": [
+    {
+      "did": "YOUR_PRIMARY_ROBOT_DID",
+      "name": "Living room robot",
+      "model": "dreame.vacuum.p2187",
+      "region": "de",
+      "enabled": true
+    },
+    {
+      "did": "YOUR_SECOND_ROBOT_DID",
+      "name": "Bedroom robot",
+      "model": "dreame.vacuum.p2187",
+      "region": "de",
+      "enabled": true
+    }
+  ]
+}

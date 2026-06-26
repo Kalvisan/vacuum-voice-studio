@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Voice Pack Studio · X20</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <h1>Voice Pack Studio</h1>
+        <span class="subtitle">X20 · d109gl</span>
+      </div>
+    </header>
+
+    <section class="setup-flow" id="setupFlow" hidden>
+      <h2 class="setup-flow-title">Set up Voice Pack Studio</h2>
+      <p class="setup-flow-intro">Two steps: download official sounds once, then build your custom pack.</p>
+      <ol class="setup-flow-steps">
+        <li class="setup-flow-step is-active" id="setupStepBase">
+          <div class="step-head">
+            <span class="step-num">1</span>
+            <h3>Download base sounds</h3>
+          </div>
+          <p class="step-text">Get 101 official MP3 files from Xiaomi. Every voice pack you create copies from this.</p>
+          <div class="setup-row">
+            <label class="field-grow">
+              <span class="field-label">Language</span>
+              <select id="baseLangSelect" aria-label="Base pack language"></select>
+            </label>
+            <button type="button" class="btn btn-primary" id="downloadBaseBtn" data-busy-key="download-base">Download base pack</button>
+          </div>
+        </li>
+        <li class="setup-flow-step is-locked" id="setupStepPack">
+          <div class="step-head">
+            <span class="step-num">2</span>
+            <h3>Create a voice pack</h3>
+          </div>
+          <p class="step-text" id="setupStepPackText">Finish step 1 first. Then create a pack and replace individual sounds.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="dashboard" id="dashboard" hidden>
+      <div class="dashboard-grid">
+        <figure class="progress-block" aria-label="Pack progress">
+          <div class="progress-ring-wrap">
+            <svg class="progress-ring" viewBox="0 0 42 42" aria-hidden="true">
+              <circle class="ring-track" cx="21" cy="21" r="15.915"></circle>
+              <circle class="ring-fill" id="progressRing" cx="21" cy="21" r="15.915" pathLength="100"></circle>
+            </svg>
+            <div class="progress-center">
+              <span class="progress-value" id="replacedCount">0</span>
+              <span class="progress-sep">/</span>
+              <span class="progress-total" id="totalCount">101</span>
+            </div>
+          </div>
+          <figcaption class="legend">
+            <span class="legend-item legend-custom">
+              <i></i><span id="legendCustom">0</span> custom
+            </span>
+            <span class="legend-item legend-base">
+              <i></i><span id="legendOriginal">101</span> original
+            </span>
+          </figcaption>
+        </figure>
+
+        <div class="dashboard-body">
+          <div class="pack-row">
+            <label class="field-grow">
+              <span class="field-label">Active pack</span>
+              <select id="packSelect" aria-label="Active voice pack" data-busy-disable></select>
+            </label>
+            <button type="button" class="btn btn-primary" id="newPackBtn" data-busy-disable>New pack</button>
+            <button type="button" class="btn btn-danger" id="deletePackBtn" data-busy-disable hidden>Delete pack</button>
+          </div>
+          <p class="pack-meta" id="packMeta" hidden></p>
+          <div class="base-row">
+            <span class="base-label">Base language: <strong id="baseLangLabel">en</strong></span>
+            <button type="button" class="btn-link" id="toggleBaseChange" aria-expanded="false" data-busy-disable>
+              <span id="toggleBaseChangeText">Change</span>
+            </button>
+          </div>
+          <div class="base-change-panel" id="baseChangePanel" hidden>
+            <p class="base-change-hint">Downloads a new language from Xiaomi. Your existing voice packs are not deleted.</p>
+            <div class="setup-row">
+              <select id="baseLangSelectChange" aria-label="New base language" data-busy-disable></select>
+              <button type="button" class="btn" id="downloadBaseChangeBtn" data-busy-key="download-base">Replace base pack</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pack-guide" id="packGuide" hidden>
+      <div class="pack-guide-header">
+        <span class="pack-guide-badge" id="packGuideBadge">New pack</span>
+        <button type="button" class="btn-link pack-guide-close" id="dismissPackGuide" aria-label="Dismiss guide" data-busy-disable>Got it</button>
+      </div>
+      <h2 class="pack-guide-title" id="packGuideTitle">Create your first voice pack</h2>
+      <p class="pack-guide-lead" id="packGuideLead">
+        A voice pack is your personal copy of all 101 robot sounds. Replace only the phrases you want. The rest stay official.
+      </p>
+      <ol class="pack-guide-steps" id="packGuideSteps">
+        <li><strong>Create a pack:</strong> copies every sound from your base language</li>
+        <li><strong>Find a phrase:</strong> search or scroll the list below</li>
+        <li><strong>Drop an MP3:</strong> on any card to replace that one sound on your robot</li>
+      </ol>
+      <div class="pack-guide-actions" id="packGuideActions">
+        <button type="button" class="btn btn-primary" id="packGuideNewBtn" data-busy-disable>New pack</button>
+      </div>
+    </section>
+
+    <section class="toolbar" id="toolbar">
+      <input type="search" id="searchInput" placeholder="Search file or phrase..." autocomplete="off">
+      <label class="toggle">
+        <input type="checkbox" id="customOnly">
+        <span>Custom only</span>
+      </label>
+    </section>
+
+    <div class="toast" id="toast" hidden></div>
+
+    <main class="grid" id="fileGrid" aria-live="polite"></main>
+
+    <div class="empty" id="emptyState" hidden>
+      <p id="emptyText"></p>
+    </div>
+  </div>
+
+  <dialog id="newPackDialog">
+    <form method="dialog" id="newPackForm">
+      <h2>New voice pack</h2>
+      <p class="dialog-lead">Copies all 101 files from your base pack. Replace only what you need.</p>
+      <label class="field">
+        <span>Name</span>
+        <input type="text" id="packNameInput" required maxlength="80" placeholder="My voice">
+      </label>
+      <label class="field">
+        <span>Install language</span>
+        <select id="packLangSelect" aria-label="Install language" required></select>
+      </label>
+      <p class="dialog-hint">Language code sent to Xiaomi when you install this pack on the robot.</p>
+      <div class="dialog-actions">
+        <button type="button" class="btn" id="cancelPackBtn">Cancel</button>
+        <button type="submit" class="btn btn-primary" id="createPackBtn" data-busy-key="create-pack">Create</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="deletePackDialog">
+    <div class="dialog-panel">
+      <h2>Delete voice pack?</h2>
+      <p class="dialog-lead">You are about to delete <strong id="deletePackName">this pack</strong>.</p>
+      <ul class="dialog-effects" id="deletePackEffects"></ul>
+      <div class="dialog-actions">
+        <button type="button" class="btn" id="cancelDeletePackBtn">Cancel</button>
+        <button type="button" class="btn btn-danger" id="confirmDeletePackBtn" data-busy-key="delete-pack">Delete permanently</button>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="/app.js"></script>
+</body>
+</html>
