@@ -1,10 +1,12 @@
-# Xiaomi X20 Max — custom voice pack tool
+# Vacuum Voice Studio
 
-**Open source · transparent code · your Xiaomi account · official cloud install**
+**Open source · custom robot vacuum voices · remote control · official cloud install**
 
-Personalize what your **Xiaomi Robot Vacuum X20 Max** says — your language, your clips, your style. No ZIP editing by hand, no mystery scripts: everything runs on your computer and installs through the same Xiaomi cloud path as the Mi Home app.
+Personalize what your robot vacuum says — your language, your clips, your style. No ZIP editing by hand, no mystery scripts: everything runs on your computer and installs through the same cloud path as the manufacturer app.
 
-Works with model **`xiaomi.vacuum.d109gl`** (hardware ID `d109gl`). If you searched for *Xiaomi X20 voice pack*, *X20 Max custom sounds*, *change robot vacuum voice*, or *Mi Home custom voice*, you are in the right place.
+If you searched for *custom robot vacuum voice*, *change vacuum robot sounds*, *robot vacuum voice pack*, *Mi Home custom voice*, or *Xiaomi X20 voice pack*, you are in the right place.
+
+**Supported today:** Xiaomi Robot Vacuum X20 Max — model **`xiaomi.vacuum.d109gl`** (hardware ID `d109gl`). More robots are planned; contributions for other models are welcome.
 
 ![Voice Pack Studio — progress ring, active pack, drag-and-drop MP3 editor](docs/images/voice-pack-studio.png)
 
