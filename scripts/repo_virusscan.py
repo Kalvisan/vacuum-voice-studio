@@ -41,6 +41,12 @@ ALLOWED_URL_HOST_RE = re.compile(
     re.IGNORECASE,
 )
 
+# README and docs may link to this repository on GitHub (badges, issues, raw files).
+MARKDOWN_URL_HOST_RE = re.compile(
+    r"^(github\.com|raw\.githubusercontent\.com|gist\.github\.com)$",
+    re.IGNORECASE,
+)
+
 SECRET_PATTERNS = (
     (re.compile(r'"serviceToken"\s*:\s*"(?!YOUR_)[^"]{8,}"'), "Live serviceToken in a tracked file"),
     (re.compile(r'"ssecurity"\s*:\s*"(?!YOUR_)[^"]{8,}"'), "Live ssecurity in a tracked file"),
@@ -105,15 +111,19 @@ def iter_scan_files() -> list[Path]:
 
 
 def check_urls(path: Path, text: str, report: ScanReport) -> None:
+    is_markdown = path.suffix.lower() == ".md"
     for match in URL_RE.finditer(text):
         host = match.group(1).split(":")[0]
-        if not ALLOWED_URL_HOST_RE.match(host):
-            report.add(
-                "error",
-                "network",
-                path,
-                f"Unexpected outbound URL host: {host} ({match.group(0)})",
-            )
+        if ALLOWED_URL_HOST_RE.match(host):
+            continue
+        if is_markdown and MARKDOWN_URL_HOST_RE.match(host):
+            continue
+        report.add(
+            "error",
+            "network",
+            path,
+            f"Unexpected outbound URL host: {host} ({match.group(0)})",
+        )
 
 
 def check_patterns(path: Path, text: str, report: ScanReport) -> None:
