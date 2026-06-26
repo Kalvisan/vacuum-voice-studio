@@ -1,5 +1,7 @@
 # Vacuum Voice Studio
 
+[![Repository virusscan](https://github.com/Kalvisan/vacuum-voice-studio/actions/workflows/virusscan.yml/badge.svg)](https://github.com/Kalvisan/vacuum-voice-studio/actions/workflows/virusscan.yml)
+
 **Open source · custom robot vacuum voices · remote control · official cloud install**
 
 Personalize what your robot vacuum says — your language, your clips, your style. No ZIP editing by hand, no mystery scripts: everything runs on your computer and installs through the same cloud path as the manufacturer app.
